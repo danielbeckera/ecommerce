@@ -7,13 +7,19 @@ import {
   ArrowDropDownOutlined,
   ArrowDropUpOutlined,
 } from "@mui/icons-material";
+import { withStyles } from "@mui/styles";
 import { Avatar } from "@mui/material";
 import photo from "../assets/image.jpg";
 
 const HeaderContainer = styled.header`
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 1em;
+  @media (min-width: 850px) {
+    flex-direction: row;
+  }
 `;
 
 const Navbar = styled.ul`
@@ -33,6 +39,13 @@ const AvatarSection = styled.div`
   display: flex;
 `;
 
+const WelcomeAvatarSection = styled.div`
+  display: flex;
+  @media (min-width: 850px) {
+    flex-direction: row;
+  }
+`;
+
 const WelcomeMessage = styled.p`
   margin-right: 1em;
   font-size: 0.8rem;
@@ -41,7 +54,6 @@ const WelcomeMessage = styled.p`
 
 const IconsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
 `;
 
@@ -50,6 +62,7 @@ function Header() {
     <div>
       <HeaderContainer>
         <h3>Logo</h3>
+        {/* Navigation */}
         <nav>
           <Navbar>
             <NavbarItems>
@@ -70,9 +83,12 @@ function Header() {
             </NavbarItems>
           </Navbar>
         </nav>
+        {/* Avatar section */}
         <AvatarSection>
-          <WelcomeMessage>WELCOME, BRUNA</WelcomeMessage>
-          <Avatar src={photo} sx={{ marginRight: "1em" }} />
+          <WelcomeAvatarSection>
+            <WelcomeMessage>WELCOME, BRUNA</WelcomeMessage>
+            <Avatar src={photo} sx={{ marginRight: "1em" }} />
+          </WelcomeAvatarSection>
           <IconsContainer>
             <SearchOutlined sx={{ marginRight: "15px" }} />
             <FavoriteBorderOutlined sx={{ marginRight: "15px" }} />
