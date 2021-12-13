@@ -6,9 +6,14 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 25%;
-  margin-right: 3em;
+  width: 100%;
   min-width: 12%;
+  margin-right: 3em;
+
+  @media (min-width: 850px) {
+    margin-right: 3em;
+    width: 25%;
+  }
 `;
 
 const Image = styled.img`

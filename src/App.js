@@ -11,7 +11,6 @@ const MainContainer = styled.div`
 function App() {
   return (
     <MainContainer>
-      <Header></Header>
       <Shop />
     </MainContainer>
   );
