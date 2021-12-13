@@ -32,8 +32,8 @@ const Container = styled.div`
 
 const DrawerContainer = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: flex-start;
   visibility: visible;
   @media (min-width: 850px) {
     visibility: hidden;
@@ -54,6 +54,7 @@ function SidebarFilter() {
     getWindowDimensions()
   );
   const [itemsToDisplay, setItemsToDisplay] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const toggleDrawer = (open) => (event) => {
     setState(open);
@@ -69,6 +70,7 @@ function SidebarFilter() {
   }, []);
 
   const getItems = (category) => {
+    setLoading(true);
     axios
       .get(`https://fakestoreapi.com/products/category/${category}`)
       .then(function (response) {
@@ -80,7 +82,7 @@ function SidebarFilter() {
         console.log(error);
       })
       .then(function () {
-        // always executed
+        setLoading(false);
       });
   };
 
@@ -132,7 +134,12 @@ function SidebarFilter() {
             <AccordionDetails>
               <FlexSidebarItems>
                 <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>JEWELRY</Typography>
+                <Typography
+                  onClick={() => getItems("jewelery")}
+                  sx={{ fontSize: "0.7rem" }}
+                >
+                  JEWELRY
+                </Typography>
               </FlexSidebarItems>
             </AccordionDetails>
           </Accordion>
@@ -153,7 +160,10 @@ function SidebarFilter() {
             <AccordionDetails>
               <FlexSidebarItems>
                 <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>
+                <Typography
+                  onClick={() => getItems("men's%20clothing")}
+                  sx={{ fontSize: "0.7rem" }}
+                >
                   MEN'S CLOTHING
                 </Typography>
               </FlexSidebarItems>
@@ -176,7 +186,12 @@ function SidebarFilter() {
             <AccordionDetails>
               <FlexSidebarItems>
                 <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>WOMENS</Typography>
+                <Typography
+                  onClick={() => getItems("women's%20clothing")}
+                  sx={{ fontSize: "0.7rem" }}
+                >
+                  WOMENS
+                </Typography>
               </FlexSidebarItems>
             </AccordionDetails>
           </Accordion>
@@ -228,7 +243,12 @@ function SidebarFilter() {
             <AccordionDetails>
               <FlexSidebarItems>
                 <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>JEWELRY</Typography>
+                <Typography
+                  onClick={() => getItems("jewelery")}
+                  sx={{ fontSize: "0.7rem" }}
+                >
+                  JEWELRY
+                </Typography>
               </FlexSidebarItems>
             </AccordionDetails>
           </Accordion>
@@ -249,7 +269,12 @@ function SidebarFilter() {
             <AccordionDetails>
               <FlexSidebarItems>
                 <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>MEN'S</Typography>
+                <Typography
+                  onClick={() => getItems("men's%20clothing")}
+                  sx={{ fontSize: "0.7rem" }}
+                >
+                  MEN'S
+                </Typography>
               </FlexSidebarItems>
             </AccordionDetails>
           </Accordion>
@@ -270,13 +295,18 @@ function SidebarFilter() {
             <AccordionDetails>
               <FlexSidebarItems>
                 <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>WOMENS</Typography>
+                <Typography
+                  onClick={() => getItems("women's%20clothing")}
+                  sx={{ fontSize: "0.7rem" }}
+                >
+                  WOMENS
+                </Typography>
               </FlexSidebarItems>
             </AccordionDetails>
           </Accordion>
         </Container>
       ) : null}
-      <ItemsScreen itemsToDisplay={itemsToDisplay} />
+      <ItemsScreen loading={loading} itemsToDisplay={itemsToDisplay} />
     </React.Fragment>
   );
 }

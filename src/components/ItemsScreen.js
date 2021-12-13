@@ -24,6 +24,7 @@ function ItemsScreen(props) {
       {itemsToDisplay.map((item) => {
         return (
           <Product
+            loading={props.loading}
             key={item.id}
             title={item.title}
             price={item.price}

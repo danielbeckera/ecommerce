@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import image from "../assets/product.jpg";
 import styled from "styled-components";
+import ReactLoading from "react-loading";
 
 const Container = styled.div`
   display: flex;
@@ -12,14 +13,14 @@ const Container = styled.div`
 
   @media (min-width: 850px) {
     margin-right: 3em;
-    width: 25%;
+    width: 26%;
   }
 `;
 
 const Image = styled.img`
-  width: 18%;
-  min-width: 150px;
-  max-width: 350px;
+  width: 200px;
+  height: 200px;
+  object-fit: fill;
 `;
 
 const ItemDescription = styled.p`
@@ -44,6 +45,9 @@ function Product(props) {
 
   return (
     <Container>
+      {props.loading ? (
+        <ReactLoading type="cubes" color="#d3d3d3" height={50} width={50} />
+      ) : null}
       <Image style={{}} src={props.image} alt="External HD" />
       <div>
         <ItemDescription>{props.title}</ItemDescription>
