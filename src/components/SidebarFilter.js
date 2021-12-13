@@ -61,25 +61,13 @@ function SidebarFilter() {
                   fontSize: "1.2rem",
                 }}
               >
-                Apparels
+                Electronics
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <FlexSidebarItems>
                 <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>PANTS</Typography>
-              </FlexSidebarItems>
-              <FlexSidebarItems>
-                <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>JUMPSUITS</Typography>
-              </FlexSidebarItems>
-              <FlexSidebarItems>
-                <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>SHORTS</Typography>
-              </FlexSidebarItems>
-              <FlexSidebarItems>
-                <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>TOPS</Typography>
+                <Typography sx={{ fontSize: "0.7rem" }}>ELECTRONICS</Typography>
               </FlexSidebarItems>
             </AccordionDetails>
           </Accordion>
@@ -94,7 +82,7 @@ function SidebarFilter() {
                   fontSize: "1.2rem",
                 }}
               >
-                Accessories
+                JEWELRY
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -102,17 +90,9 @@ function SidebarFilter() {
                 <ArrowRight />
                 <Typography sx={{ fontSize: "0.7rem" }}>JEWELRY</Typography>
               </FlexSidebarItems>
-              <FlexSidebarItems>
-                <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>SHOES</Typography>
-              </FlexSidebarItems>
-              <FlexSidebarItems>
-                <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>ACCESSORIES</Typography>
-              </FlexSidebarItems>
             </AccordionDetails>
           </Accordion>
-          {/* Houseware */}
+          {/* Mens */}
           <Accordion sx={{ boxShadow: 0, width: "35%" }}>
             <AccordionSummary>
               <Typography
@@ -123,21 +103,15 @@ function SidebarFilter() {
                   fontSize: "1.2rem",
                 }}
               >
-                Houseware
+                Mens
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <FlexSidebarItems>
                 <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>DECO</Typography>
-              </FlexSidebarItems>
-              <FlexSidebarItems>
-                <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>BED</Typography>
-              </FlexSidebarItems>
-              <FlexSidebarItems>
-                <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>BEDROOM</Typography>
+                <Typography sx={{ fontSize: "0.7rem" }}>
+                  MEN'S CLOTHING
+                </Typography>
               </FlexSidebarItems>
             </AccordionDetails>
           </Accordion>
@@ -152,21 +126,13 @@ function SidebarFilter() {
                   fontSize: "1.2rem",
                 }}
               >
-                Others
+                Womens
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <FlexSidebarItems>
                 <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>SMARTPHONES</Typography>
-              </FlexSidebarItems>
-              <FlexSidebarItems>
-                <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>BED</Typography>
-              </FlexSidebarItems>
-              <FlexSidebarItems>
-                <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>BEDROOM</Typography>
+                <Typography sx={{ fontSize: "0.7rem" }}>WOMENS</Typography>
               </FlexSidebarItems>
             </AccordionDetails>
           </Accordion>
@@ -185,25 +151,13 @@ function SidebarFilter() {
                 fontSize: "1.2rem",
               }}
             >
-              Apparels
+              Electronics
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <FlexSidebarItems>
               <ArrowRight />
-              <Typography sx={{ fontSize: "0.7rem" }}>PANTS</Typography>
-            </FlexSidebarItems>
-            <FlexSidebarItems>
-              <ArrowRight />
-              <Typography sx={{ fontSize: "0.7rem" }}>JUMPSUITS</Typography>
-            </FlexSidebarItems>
-            <FlexSidebarItems>
-              <ArrowRight />
-              <Typography sx={{ fontSize: "0.7rem" }}>SHORTS</Typography>
-            </FlexSidebarItems>
-            <FlexSidebarItems>
-              <ArrowRight />
-              <Typography sx={{ fontSize: "0.7rem" }}>TOPS</Typography>
+              <Typography sx={{ fontSize: "0.7rem" }}>ELECTRONICS</Typography>
             </FlexSidebarItems>
           </AccordionDetails>
         </Accordion>
@@ -218,7 +172,7 @@ function SidebarFilter() {
                 fontSize: "1.2rem",
               }}
             >
-              Accessories
+              Jewelry
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -226,17 +180,9 @@ function SidebarFilter() {
               <ArrowRight />
               <Typography sx={{ fontSize: "0.7rem" }}>JEWELRY</Typography>
             </FlexSidebarItems>
-            <FlexSidebarItems>
-              <ArrowRight />
-              <Typography sx={{ fontSize: "0.7rem" }}>SHOES</Typography>
-            </FlexSidebarItems>
-            <FlexSidebarItems>
-              <ArrowRight />
-              <Typography sx={{ fontSize: "0.7rem" }}>ACCESSORIES</Typography>
-            </FlexSidebarItems>
           </AccordionDetails>
         </Accordion>
-        {/* Houseware */}
+        {/* Mens */}
         <Accordion sx={{ boxShadow: 0, width: "35%" }}>
           <AccordionSummary>
             <Typography
@@ -247,21 +193,13 @@ function SidebarFilter() {
                 fontSize: "1.2rem",
               }}
             >
-              Houseware
+              Mens
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <FlexSidebarItems>
               <ArrowRight />
-              <Typography sx={{ fontSize: "0.7rem" }}>DECO</Typography>
-            </FlexSidebarItems>
-            <FlexSidebarItems>
-              <ArrowRight />
-              <Typography sx={{ fontSize: "0.7rem" }}>BED</Typography>
-            </FlexSidebarItems>
-            <FlexSidebarItems>
-              <ArrowRight />
-              <Typography sx={{ fontSize: "0.7rem" }}>BEDROOM</Typography>
+              <Typography sx={{ fontSize: "0.7rem" }}>MEN'S</Typography>
             </FlexSidebarItems>
           </AccordionDetails>
         </Accordion>
@@ -276,21 +214,13 @@ function SidebarFilter() {
                 fontSize: "1.2rem",
               }}
             >
-              Others
+              Womens
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <FlexSidebarItems>
               <ArrowRight />
-              <Typography sx={{ fontSize: "0.7rem" }}>SMARTPHONES</Typography>
-            </FlexSidebarItems>
-            <FlexSidebarItems>
-              <ArrowRight />
-              <Typography sx={{ fontSize: "0.7rem" }}>BED</Typography>
-            </FlexSidebarItems>
-            <FlexSidebarItems>
-              <ArrowRight />
-              <Typography sx={{ fontSize: "0.7rem" }}>BEDROOM</Typography>
+              <Typography sx={{ fontSize: "0.7rem" }}>WOMENS</Typography>
             </FlexSidebarItems>
           </AccordionDetails>
         </Accordion>
