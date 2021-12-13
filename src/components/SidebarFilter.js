@@ -14,6 +14,8 @@ import {
 import { withStyles } from "@mui/styles";
 import { ArrowRight, MenuOutlined } from "@mui/icons-material";
 import styled from "styled-components";
+import ItemsScreen from "./ItemsScreen";
+import axios from "axios";
 
 const FlexSidebarItems = styled.div`
   display: flex;
@@ -51,6 +53,7 @@ function SidebarFilter() {
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
   );
+  const [itemsToDisplay, setItemsToDisplay] = useState([]);
 
   const toggleDrawer = (open) => (event) => {
     setState(open);
@@ -64,6 +67,22 @@ function SidebarFilter() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const getItems = (category) => {
+    axios
+      .get(`https://fakestoreapi.com/products/category/${category}`)
+      .then(function (response) {
+        setItemsToDisplay(response.data);
+        console.log(response);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  };
 
   return (
     <React.Fragment>
@@ -81,13 +100,18 @@ function SidebarFilter() {
                   fontSize: "1.2rem",
                 }}
               >
-                Electronics
+                <span>Electronics</span>
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <FlexSidebarItems>
                 <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>ELECTRONICS</Typography>
+                <Typography
+                  onClick={() => getItems("electronics")}
+                  sx={{ fontSize: "0.7rem" }}
+                >
+                  <span>ELECTRONICS</span>
+                </Typography>
               </FlexSidebarItems>
             </AccordionDetails>
           </Accordion>
@@ -178,7 +202,12 @@ function SidebarFilter() {
             <AccordionDetails>
               <FlexSidebarItems>
                 <ArrowRight />
-                <Typography sx={{ fontSize: "0.7rem" }}>ELECTRONICS</Typography>
+                <Typography
+                  onClick={() => getItems("electronics")}
+                  sx={{ fontSize: "0.7rem" }}
+                >
+                  <span>ELECTRONICS</span>
+                </Typography>
               </FlexSidebarItems>
             </AccordionDetails>
           </Accordion>
@@ -247,6 +276,7 @@ function SidebarFilter() {
           </Accordion>
         </Container>
       ) : null}
+      <ItemsScreen itemsToDisplay={itemsToDisplay} />
     </React.Fragment>
   );
 }

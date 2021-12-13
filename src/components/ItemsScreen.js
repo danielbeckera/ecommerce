@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Product from "./Product";
 import styled from "styled-components";
 
@@ -12,21 +12,25 @@ const Container = styled.div`
   }
 `;
 
-function ItemsScreen() {
+function ItemsScreen(props) {
+  const [itemsToDisplay, setItemsToDisplay] = useState([]);
+
+  useEffect(() => {
+    setItemsToDisplay(props.itemsToDisplay);
+  }, [props.itemsToDisplay]);
+
   return (
     <Container>
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
+      {itemsToDisplay.map((item) => {
+        return (
+          <Product
+            key={item.id}
+            title={item.title}
+            price={item.price}
+            image={item.image}
+          />
+        );
+      })}
     </Container>
   );
 }

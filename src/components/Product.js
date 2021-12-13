@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import image from "../assets/product.jpg";
 import styled from "styled-components";
 
@@ -35,15 +35,19 @@ const ItemPrice = styled.p`
   margin-bottom: 2em;
 `;
 
-function Product() {
+function Product(props) {
+  // const [items, setItems] = useState([]);
+
+  // useEffect(() => {
+  //   setItems(props.itemsToDisplay);
+  // }, [props.itemsToDisplay]);
+
   return (
     <Container>
-      <Image style={{}} src={image} alt="External HD" />
+      <Image style={{}} src={props.image} alt="External HD" />
       <div>
-        <ItemDescription>
-          WD 2TB Elements Portable External Hard Drive - USB 3.0{" "}
-        </ItemDescription>
-        <ItemPrice>$64</ItemPrice>
+        <ItemDescription>{props.title}</ItemDescription>
+        <ItemPrice>${props.price}</ItemPrice>
       </div>
     </Container>
   );

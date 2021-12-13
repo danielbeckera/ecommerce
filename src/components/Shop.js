@@ -23,7 +23,7 @@ function Shop() {
       <Header />
       <FlexContainer>
         <SidebarFilter />
-        <ItemsScreen />
+        {/* <ItemsScreen /> */}
       </FlexContainer>
     </Container>
   );
