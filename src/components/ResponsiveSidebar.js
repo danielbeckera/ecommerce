@@ -8,6 +8,9 @@ import {
 } from "@mui/material";
 import { ArrowRight, MenuOutlined } from "@mui/icons-material";
 import styled from "styled-components";
+import ItemsScreen from "./ItemsScreen";
+import axios from "axios";
+import ReactLoading from "react-loading";
 
 const FlexSidebarItems = styled.div`
   display: flex;
@@ -15,10 +18,19 @@ const FlexSidebarItems = styled.div`
 `;
 
 const Container = styled.div`
-  width: 10%;
+  width: 25%;
   visibility: hidden;
   @media (min-width: 850px) {
     visibility: visible;
+  }
+`;
+
+const DrawerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  visibility: visible;
+  @media (min-width: 850px) {
+    visibility: hidden;
   }
 `;
 
@@ -30,10 +42,15 @@ function getWindowDimensions() {
   };
 }
 
-function SidebarFilter(props) {
+function ResponsiveSidebar(props) {
+  const [state, setState] = useState(false);
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
   );
+
+  const toggleDrawer = (open) => (event) => {
+    setState(open);
+  };
 
   useEffect(() => {
     function handleResize() {
@@ -46,19 +63,21 @@ function SidebarFilter(props) {
 
   return (
     <React.Fragment>
-      {/* Menu browser */}
-      {windowDimensions.width > 850 ? (
-        <Container>
-          <Accordion sx={{ boxShadow: 0 }}>
-            <AccordionSummary sx={{ padding: 0 }}>
+      {/* Menu Responsivo */}
+      <DrawerContainer>
+        <MenuOutlined onClick={toggleDrawer(true)} />
+        <Drawer anchor={"top"} open={state} onClose={toggleDrawer(false)}>
+          <Accordion sx={{ boxShadow: 0, width: "35%" }}>
+            <AccordionSummary>
               <Typography
                 sx={{
+                  width: "33%",
                   flexShrink: 0,
                   fontWeight: 500,
                   fontSize: "1.2rem",
                 }}
               >
-                Electronics
+                <span>Electronics</span>
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -74,8 +93,8 @@ function SidebarFilter(props) {
             </AccordionDetails>
           </Accordion>
           {/* Accessories */}
-          <Accordion sx={{ boxShadow: 0 }}>
-            <AccordionSummary sx={{ padding: 0 }}>
+          <Accordion sx={{ boxShadow: 0, width: "35%" }}>
+            <AccordionSummary>
               <Typography
                 sx={{
                   width: "33%",
@@ -100,8 +119,8 @@ function SidebarFilter(props) {
             </AccordionDetails>
           </Accordion>
           {/* Mens */}
-          <Accordion sx={{ boxShadow: 0 }}>
-            <AccordionSummary sx={{ padding: 0 }}>
+          <Accordion sx={{ boxShadow: 0, width: "35%" }}>
+            <AccordionSummary>
               <Typography
                 sx={{
                   width: "33%",
@@ -120,14 +139,14 @@ function SidebarFilter(props) {
                   onClick={() => props.getItems("men's%20clothing")}
                   sx={{ fontSize: "0.7rem" }}
                 >
-                  MEN'S
+                  MEN'S CLOTHING
                 </Typography>
               </FlexSidebarItems>
             </AccordionDetails>
           </Accordion>
           {/* Others */}
-          <Accordion sx={{ boxShadow: 0 }}>
-            <AccordionSummary sx={{ padding: 0 }}>
+          <Accordion sx={{ boxShadow: 0, width: "35%" }}>
+            <AccordionSummary>
               <Typography
                 sx={{
                   width: "33%",
@@ -151,10 +170,10 @@ function SidebarFilter(props) {
               </FlexSidebarItems>
             </AccordionDetails>
           </Accordion>
-        </Container>
-      ) : null}
+        </Drawer>
+      </DrawerContainer>
     </React.Fragment>
   );
 }
 
-export default SidebarFilter;
+export default ResponsiveSidebar;

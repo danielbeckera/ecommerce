@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import image from "../assets/product.jpg";
+import React from "react";
 import styled from "styled-components";
 import ReactLoading from "react-loading";
 
@@ -13,6 +12,7 @@ const Container = styled.div`
 
   @media (min-width: 850px) {
     margin-right: 3em;
+    margin-left: 3em;
     width: 26%;
   }
 `;

@@ -1,18 +1,14 @@
 import React from "react";
-import Header from "./components/Header";
-import styled from "styled-components";
 import Shop from "./components/Shop";
-
-const MainContainer = styled.div`
-  margin: 0 auto;
-  width: 80%;
-`;
+import Cart from "./components/Cart";
+import { Routes, Route, Outlet, Link } from "react-router-dom";
 
 function App() {
   return (
-    <MainContainer>
-      <Shop />
-    </MainContainer>
+    <Routes>
+      <Route exact path="/" element={<Shop />} />
+      <Route exact path="/cart" element={<Cart />} />
+    </Routes>
   );
 }
 

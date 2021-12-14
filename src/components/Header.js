@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import {
   SearchOutlined,
@@ -10,6 +10,8 @@ import {
 import { withStyles } from "@mui/styles";
 import { Avatar } from "@mui/material";
 import photo from "../assets/image.jpg";
+import ResponsiveSidebar from "./ResponsiveSidebar";
+import { Routes, Route, Outlet, Link } from "react-router-dom";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -57,11 +59,52 @@ const IconsContainer = styled.div`
   align-items: center;
 `;
 
-function Header() {
+const FlexContainer = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  @media (min-width: 850px) {
+    justify-content: space-between;
+    width: 0%;
+  }
+`;
+
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height,
+  };
+}
+
+function Header(props) {
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div>
       <HeaderContainer>
-        <h3>Logo</h3>
+        <FlexContainer>
+          {windowDimensions.width < 850 ? (
+            <ResponsiveSidebar
+              getItems={props.getItems}
+              loading={props.loading}
+              itemsToDisplay={props.itemsToDisplay}
+            />
+          ) : null}
+          <h3 style={{ textAlign: "center" }}>Logo</h3>
+        </FlexContainer>
         {/* Navigation */}
         <nav>
           <Navbar>
@@ -92,7 +135,9 @@ function Header() {
           <IconsContainer>
             <SearchOutlined sx={{ marginRight: "15px" }} />
             <FavoriteBorderOutlined sx={{ marginRight: "15px" }} />
-            <ShoppingBasketOutlined sx={{ marginRight: "15px" }} />
+            <Link to="/cart">
+              <ShoppingBasketOutlined sx={{ marginRight: "15px" }} />
+            </Link>
           </IconsContainer>
         </AvatarSection>
       </HeaderContainer>
