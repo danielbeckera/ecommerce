@@ -48,7 +48,7 @@ function SidebarFilter() {
     getWindowDimensions()
   );
   const [itemsToDisplay, setItemsToDisplay] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const toggleDrawer = (open) => (event) => {
     setState(open);
@@ -64,12 +64,6 @@ function SidebarFilter() {
   }, []);
 
   const getItems = (category) => {
-    itemsToDisplay.map((items) => {
-      items.title = "";
-      items.image = "";
-      items.price = "";
-    });
-
     setLoading(true);
     axios
       .get(`https://fakestoreapi.com/products/category/${category}`)
@@ -201,7 +195,7 @@ function SidebarFilter() {
       {/* Menu browser */}
       {windowDimensions.width > 850 ? (
         <Container>
-          <Accordion sx={{ boxShadow: 0, width: "35%" }}>
+          <Accordion sx={{ boxShadow: 0 }}>
             <AccordionSummary>
               <Typography
                 sx={{
@@ -226,7 +220,7 @@ function SidebarFilter() {
             </AccordionDetails>
           </Accordion>
           {/* Accessories */}
-          <Accordion sx={{ boxShadow: 0, width: "35%" }}>
+          <Accordion sx={{ boxShadow: 0 }}>
             <AccordionSummary>
               <Typography
                 sx={{
@@ -252,7 +246,7 @@ function SidebarFilter() {
             </AccordionDetails>
           </Accordion>
           {/* Mens */}
-          <Accordion sx={{ boxShadow: 0, width: "35%" }}>
+          <Accordion sx={{ boxShadow: 0 }}>
             <AccordionSummary>
               <Typography
                 sx={{
@@ -278,7 +272,7 @@ function SidebarFilter() {
             </AccordionDetails>
           </Accordion>
           {/* Others */}
-          <Accordion sx={{ boxShadow: 0, width: "35%" }}>
+          <Accordion sx={{ boxShadow: 0 }}>
             <AccordionSummary>
               <Typography
                 sx={{

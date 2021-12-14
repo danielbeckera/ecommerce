@@ -8,8 +8,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-width: 12%;
   margin-right: 3em;
+  margin-bottom: 3em;
 
   @media (min-width: 850px) {
     margin-right: 3em;
@@ -18,6 +18,9 @@ const Container = styled.div`
 `;
 
 const Image = styled.img`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 200px;
   height: 200px;
   object-fit: contain;
@@ -30,7 +33,7 @@ const ItemDescription = styled.p`
 `;
 
 const ItemPrice = styled.p`
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 200;
   margin: 0;
   margin-bottom: 2em;
@@ -46,13 +49,16 @@ function Product(props) {
   return (
     <Container>
       {props.loading ? (
-        <ReactLoading type="cubes" color="#d3d3d3" height={50} width={50} />
-      ) : null}
-      <Image style={{}} src={props.image} alt="External HD" />
-      <div>
-        <ItemDescription>{props.title}</ItemDescription>
-        <ItemPrice>${props.price}</ItemPrice>
-      </div>
+        <ReactLoading type="spin" color="#d3d3d3" height={50} width={50} />
+      ) : (
+        <div>
+          <Image style={{}} src={props.image} alt="External HD" />
+          <div>
+            <ItemDescription>{props.title}</ItemDescription>
+            <ItemPrice>${props.price}</ItemPrice>
+          </div>
+        </div>
+      )}
     </Container>
   );
 }
