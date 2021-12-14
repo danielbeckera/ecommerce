@@ -5,17 +5,12 @@ import {
   AccordionSummary,
   Typography,
   Drawer,
-  Box,
-  List,
-  ListItem,
-  Divider,
-  Button,
 } from "@mui/material";
-import { withStyles } from "@mui/styles";
 import { ArrowRight, MenuOutlined } from "@mui/icons-material";
 import styled from "styled-components";
 import ItemsScreen from "./ItemsScreen";
 import axios from "axios";
+import ReactLoading from "react-loading";
 
 const FlexSidebarItems = styled.div`
   display: flex;
@@ -33,7 +28,6 @@ const Container = styled.div`
 const DrawerContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   visibility: visible;
   @media (min-width: 850px) {
     visibility: hidden;
@@ -70,6 +64,12 @@ function SidebarFilter() {
   }, []);
 
   const getItems = (category) => {
+    itemsToDisplay.map((items) => {
+      items.title = "";
+      items.image = "";
+      items.price = "";
+    });
+
     setLoading(true);
     axios
       .get(`https://fakestoreapi.com/products/category/${category}`)
@@ -205,7 +205,6 @@ function SidebarFilter() {
             <AccordionSummary>
               <Typography
                 sx={{
-                  width: "33%",
                   flexShrink: 0,
                   fontWeight: 500,
                   fontSize: "1.2rem",
