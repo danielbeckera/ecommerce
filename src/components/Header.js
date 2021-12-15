@@ -7,11 +7,10 @@ import {
   ArrowDropDownOutlined,
   ArrowDropUpOutlined,
 } from "@mui/icons-material";
-import { withStyles } from "@mui/styles";
 import { Avatar } from "@mui/material";
-import photo from "../assets/image.jpg";
+import photo from "../assets/product.jpg";
 import ResponsiveSidebar from "./ResponsiveSidebar";
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -129,7 +128,7 @@ function Header(props) {
         {/* Avatar section */}
         <AvatarSection>
           <WelcomeAvatarSection>
-            <WelcomeMessage>WELCOME, BRUNA</WelcomeMessage>
+            <WelcomeMessage>WELCOME, BILL</WelcomeMessage>
             <Avatar src={photo} sx={{ marginRight: "1em" }} />
           </WelcomeAvatarSection>
           <IconsContainer>

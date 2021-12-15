@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ReactLoading from "react-loading";
+import { AddCircleOutline } from "@mui/icons-material";
 
 const Container = styled.div`
   display: flex;
@@ -15,6 +16,12 @@ const Container = styled.div`
     margin-left: 3em;
     width: 26%;
   }
+`;
+
+const InnerContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
 `;
 
 const Image = styled.img`
@@ -40,12 +47,6 @@ const ItemPrice = styled.p`
 `;
 
 function Product(props) {
-  // const [items, setItems] = useState([]);
-
-  // useEffect(() => {
-  //   setItems(props.itemsToDisplay);
-  // }, [props.itemsToDisplay]);
-
   return (
     <Container>
       {props.loading ? (
@@ -53,6 +54,9 @@ function Product(props) {
       ) : (
         <div>
           <Image style={{}} src={props.image} alt="External HD" />
+          <InnerContainer>
+            <AddCircleOutline onClick={() => props.handleAddCart(props.id)} />
+          </InnerContainer>
           <div>
             <ItemDescription>{props.title}</ItemDescription>
             <ItemPrice>${props.price}</ItemPrice>

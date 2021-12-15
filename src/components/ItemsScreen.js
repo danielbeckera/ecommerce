@@ -25,10 +25,11 @@ function ItemsScreen(props) {
         return (
           <Product
             loading={props.loading}
-            key={item.id}
+            id={item.id}
             title={item.title}
             price={item.price}
             image={item.image}
+            handleAddCart={props.handleAddCart}
           />
         );
       })}

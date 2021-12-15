@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import styled from "styled-components";
-
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -11,14 +10,23 @@ const Container = styled.div`
   width: 80%;
 `;
 
-function Cart() {
+function Cart(props) {
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    setCartItems([...props.cartItems, props.cartItems]);
+    console.log(cartItems);
+  }, [props.cartItems, cartItems]);
+
   return (
     <Container>
       <Header />
       <Link to="/">
         <span>Back to homepage</span>
       </Link>
-      <h1>this is a cart</h1>
+      {cartItems.map((item) => {
+        return <h1>{item.title}</h1>;
+      })}
     </Container>
   );
 }

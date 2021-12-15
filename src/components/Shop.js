@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import SidebarFilter from "./SidebarFilter";
 import ItemsScreen from "./ItemsScreen";
 import styled from "styled-components";
 import Header from "./Header";
-import axios from "axios";
 
 const Container = styled.div`
   display: flex;
@@ -20,40 +19,25 @@ const FlexContainer = styled.div`
   }
 `;
 
-function Shop() {
-  const [itemsToDisplay, setItemsToDisplay] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const getItems = (category) => {
-    setLoading(true);
-    axios
-      .get(`https://fakestoreapi.com/products/category/${category}`)
-      .then(function (response) {
-        setItemsToDisplay(response.data);
-        console.log(response);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
-        setLoading(false);
-      });
-  };
+function Shop(props) {
   return (
     <Container>
       <Header
-        getItems={getItems}
-        loading={loading}
-        itemsToDisplay={itemsToDisplay}
+        getItems={props.getItems}
+        loading={props.loading}
+        itemsToDisplay={props.itemsToDisplay}
       />
       <FlexContainer>
         <SidebarFilter
-          getItems={getItems}
-          loading={loading}
-          itemsToDisplay={itemsToDisplay}
+          getItems={props.getItems}
+          loading={props.loading}
+          itemsToDisplay={props.itemsToDisplay}
         />
-        <ItemsScreen loading={loading} itemsToDisplay={itemsToDisplay} />
+        <ItemsScreen
+          handleAddCart={props.handleAddCart}
+          loading={props.loading}
+          itemsToDisplay={props.itemsToDisplay}
+        />
       </FlexContainer>
     </Container>
   );
