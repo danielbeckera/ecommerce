@@ -17,7 +17,6 @@ function App() {
         setItemsToDisplay(response.data);
       })
       .catch(function (error) {
-        // handle error
         console.log(error);
       })
       .then(function () {
@@ -26,7 +25,6 @@ function App() {
   };
 
   const handleAddCart = (id) => {
-    // const itemProCart = [...itemsToDisplay].filter((item) => item.id === id);
     itemsToDisplay.map((item) => {
       if (id === item.id) {
         setCartItems([...cartItems, item]);
