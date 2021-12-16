@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import IncreaseDecreaseProduct from "./IncreaseDecreaseProduct";
 
@@ -37,15 +37,34 @@ const FlexContainer = styled.div`
 `;
 
 function CartItemInfo(props) {
+  const [quantity, setQuantity] = useState(0);
+
+  useEffect(() => {
+    setQuantity(props.quantity);
+  }, [props.quantity]);
+
+  const handleAdd = () => {
+    setQuantity((prev) => prev + 1);
+  };
+
+  const handleRemove = () => {
+    setQuantity((prev) => prev - 1);
+  };
+
   return (
     <Container>
       <FlexContainer>
         <ProductImage src={`${props.image}`}></ProductImage>
         <ProductTitle>{props.title}</ProductTitle>
         <h5>
-          <IncreaseDecreaseProduct quantity={props.quantity} />
+          <IncreaseDecreaseProduct
+            quantityNumber={quantity}
+            handleAdd={handleAdd}
+            handleRemove={handleRemove}
+            quantity={props.quantity}
+          />
         </h5>
-        <ProductPrice>{`$${props.price}`}</ProductPrice>
+        <ProductPrice>{`$${props.price * quantity}`}</ProductPrice>
       </FlexContainer>
     </Container>
   );

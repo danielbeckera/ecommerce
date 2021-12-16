@@ -3,23 +3,16 @@ import { Remove, Add } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 
 function IncreaseDecreaseProduct(props) {
-  const [quantity, setQuantity] = useState(0);
-
-  useEffect(() => {
-    setQuantity(props.quantity);
-  }, [props.quantity]);
-
-  const handleAdd = () => {
-    setQuantity((prevState) => prevState + 1);
-  };
-
   return (
     <div>
-      <IconButton>
+      <IconButton
+        disabled={props.quantityNumber <= 1}
+        onClick={props.handleRemove}
+      >
         <Remove />
       </IconButton>
-      {quantity}
-      <IconButton onClick={handleAdd}>
+      {props.quantityNumber}
+      <IconButton onClick={props.handleAdd}>
         <Add />
       </IconButton>
     </div>
