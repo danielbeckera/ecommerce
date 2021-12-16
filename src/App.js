@@ -9,6 +9,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [numberItemsCart, setNumberItemsCart] = useState();
+  const [open, setOpen] = useState(false);
 
   const getItems = (category) => {
     setLoading(true);
@@ -33,8 +34,16 @@ function App() {
     itemsToDisplay.map((item) => {
       if (id === item.id) {
         setCartItems([...cartItems, item]);
+        setOpen(true);
       }
     });
+  };
+
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
   };
 
   const clearCart = () => {
@@ -48,6 +57,8 @@ function App() {
         path="/"
         element={
           <Shop
+            handleCloseSnackbar={handleCloseSnackbar}
+            open={open}
             numberItemsCart={numberItemsCart}
             itemsToDisplay={itemsToDisplay}
             handleAddCart={handleAddCart}

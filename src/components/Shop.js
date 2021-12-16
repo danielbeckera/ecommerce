@@ -35,6 +35,8 @@ function Shop(props) {
           itemsToDisplay={props.itemsToDisplay}
         />
         <ItemsScreen
+          handleCloseSnackbar={props.handleCloseSnackbar}
+          open={props.open}
           handleAddCart={props.handleAddCart}
           loading={props.loading}
           itemsToDisplay={props.itemsToDisplay}

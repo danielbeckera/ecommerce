@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Product from "./Product";
 import styled from "styled-components";
+import { Snackbar, Alert } from "@mui/material";
 
 const Container = styled.div`
   display: flex;
@@ -33,6 +34,19 @@ function ItemsScreen(props) {
           />
         );
       })}
+      <Snackbar
+        open={props.open}
+        autoHideDuration={3000}
+        onClose={props.handleCloseSnackbar}
+      >
+        <Alert
+          onClose={props.handleCloseSnackbar}
+          severity="success"
+          sx={{ width: "100%", backgroundColor: "#357a38", color: "white" }}
+        >
+          Item adicionado ao carrinho!
+        </Alert>
+      </Snackbar>
     </Container>
   );
 }
