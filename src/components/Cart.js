@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import CartItemDescription from "./CartItemInfo";
+import CartItemInfo from "./CartItemInfo";
 import { ArrowBack } from "@mui/icons-material";
 
 const Container = styled.div`
@@ -44,11 +44,17 @@ const linkStyle = {
 
 function Cart(props) {
   const [cartItems, setCartItems] = useState([]);
+  const [iteratedCartItems, setIteratedCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     setCartItems([...props.cartItems]);
   }, [props.cartItems]);
+
+  useEffect(() => {
+    const iteratedCart = [...new Set(cartItems.map((item) => item))];
+    setIteratedCartItems(iteratedCart);
+  }, [cartItems]);
 
   useEffect(() => {
     const totalPrice = cartItems.reduce((acc, curr) => {
@@ -57,6 +63,11 @@ function Cart(props) {
     }, 0);
     setTotalPrice(totalPrice);
   }, [cartItems]);
+
+  const quantity = (id) => {
+    const filteredItems = cartItems.filter((item) => item.id === id);
+    return filteredItems.length;
+  };
 
   return (
     <Container>
@@ -75,9 +86,10 @@ function Cart(props) {
         <TotalPrice>${totalPrice}</TotalPrice>
       </TotalPriceContainer>
 
-      {cartItems.map((item) => {
+      {iteratedCartItems.map((item) => {
         return (
-          <CartItemDescription
+          <CartItemInfo
+            quantity={quantity(item.id)}
             image={item.image}
             key={item.id}
             price={item.price}

@@ -35,16 +35,17 @@ const FlexContainer = styled.div`
   align-items: center;
 `;
 
-function CartItemDescription(props) {
+function CartItemInfo(props) {
   return (
     <Container>
       <FlexContainer>
         <ProductImage src={`${props.image}`}></ProductImage>
         <ProductTitle>{props.title}</ProductTitle>
+        <h5>Qtd: {props.quantity} </h5>
         <ProductPrice>{`$${props.price}`}</ProductPrice>
       </FlexContainer>
     </Container>
   );
 }
 
-export default CartItemDescription;
+export default CartItemInfo;
