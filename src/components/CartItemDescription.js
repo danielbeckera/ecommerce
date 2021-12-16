@@ -18,16 +18,28 @@ const ProductPrice = styled.p`
   font-weight: 500;
 `;
 
+const ProductImage = styled.img`
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+`;
+
 const FlexContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 function CartItemDescription(props) {
   return (
     <Container>
       <FlexContainer>
+        <ProductImage src={`${props.image}`}></ProductImage>
         <ProductTitle>{props.title}</ProductTitle>
         <ProductPrice>{`$${props.price}`}</ProductPrice>
       </FlexContainer>

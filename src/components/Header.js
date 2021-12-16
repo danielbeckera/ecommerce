@@ -117,19 +117,19 @@ function Header(props) {
         <nav>
           <Navbar>
             <NavbarItems>
-              SHOP
+              LOJA
               <ArrowDropUpOutlined />
             </NavbarItems>
             <NavbarItems>
-              FABRIC
+              FÁBRICA
               <ArrowDropDownOutlined />
             </NavbarItems>
             <NavbarItems>
-              JOURNAL
+              JORNAL
               <ArrowDropDownOutlined />
             </NavbarItems>
             <NavbarItems>
-              ABOUT
+              SOBRE
               <ArrowDropDownOutlined />
             </NavbarItems>
           </Navbar>
@@ -137,7 +137,7 @@ function Header(props) {
         {/* Avatar section */}
         <AvatarSection>
           <WelcomeAvatarSection>
-            <WelcomeMessage>WELCOME, BILL</WelcomeMessage>
+            <WelcomeMessage>BEM-VINDO, BILL</WelcomeMessage>
             <Avatar src={photo} sx={{ marginRight: "1em" }} />
           </WelcomeAvatarSection>
           <IconsContainer>

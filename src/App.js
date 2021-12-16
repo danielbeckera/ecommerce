@@ -37,6 +37,10 @@ function App() {
     });
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   return (
     <Routes>
       <Route
@@ -56,7 +60,11 @@ function App() {
         exact
         path="/cart"
         element={
-          <Cart numberItemsCart={numberItemsCart} cartItems={cartItems} />
+          <Cart
+            clearCart={clearCart}
+            numberItemsCart={numberItemsCart}
+            cartItems={cartItems}
+          />
         }
       />
     </Routes>

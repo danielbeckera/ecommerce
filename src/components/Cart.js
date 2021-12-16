@@ -20,6 +20,7 @@ const BackHomepage = styled.span`
 const FlexContainer = styled.div`
   color: black;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 `;
 
@@ -37,15 +38,20 @@ function Cart(props) {
   return (
     <Container>
       <Header numberItemsCart={props.numberItemsCart} />
-      <Link to="/" style={linkStyle}>
-        <FlexContainer>
-          <ArrowBack />
-          <BackHomepage>Back to Store</BackHomepage>
-        </FlexContainer>
-      </Link>
+      <FlexContainer>
+        <Link to="/" style={linkStyle}>
+          <FlexContainer>
+            <ArrowBack />
+            <BackHomepage>Voltar à loja</BackHomepage>
+          </FlexContainer>
+        </Link>
+        <BackHomepage onClick={props.clearCart}>Limpar Carrinho</BackHomepage>
+      </FlexContainer>
+
       {cartItems.map((item) => {
         return (
           <CartItemDescription
+            image={item.image}
             key={item.id}
             price={item.price}
             title={item.title}

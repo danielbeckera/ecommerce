@@ -77,7 +77,7 @@ function ResponsiveSidebar(props) {
                   fontSize: "1.2rem",
                 }}
               >
-                <span>Electronics</span>
+                <span>Eletronicos</span>
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -87,7 +87,7 @@ function ResponsiveSidebar(props) {
                   onClick={() => props.getItems("electronics")}
                   sx={{ fontSize: "0.7rem" }}
                 >
-                  <span>ELECTRONICS</span>
+                  <span>ELETRONICOS</span>
                 </Typography>
               </FlexSidebarItems>
             </AccordionDetails>
@@ -103,7 +103,7 @@ function ResponsiveSidebar(props) {
                   fontSize: "1.2rem",
                 }}
               >
-                Jewelry
+                Joalheria
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -113,7 +113,7 @@ function ResponsiveSidebar(props) {
                   onClick={() => props.getItems("jewelery")}
                   sx={{ fontSize: "0.7rem" }}
                 >
-                  JEWELRY
+                  JOALHERIA
                 </Typography>
               </FlexSidebarItems>
             </AccordionDetails>
@@ -129,7 +129,7 @@ function ResponsiveSidebar(props) {
                   fontSize: "1.2rem",
                 }}
               >
-                Mens
+                Homens
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -139,7 +139,7 @@ function ResponsiveSidebar(props) {
                   onClick={() => props.getItems("men's%20clothing")}
                   sx={{ fontSize: "0.7rem" }}
                 >
-                  MEN'S CLOTHING
+                  ROUPAS HOMENS
                 </Typography>
               </FlexSidebarItems>
             </AccordionDetails>
@@ -155,7 +155,7 @@ function ResponsiveSidebar(props) {
                   fontSize: "1.2rem",
                 }}
               >
-                Womens
+                Mulheres
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -165,7 +165,7 @@ function ResponsiveSidebar(props) {
                   onClick={() => props.getItems("women's%20clothing")}
                   sx={{ fontSize: "0.7rem" }}
                 >
-                  WOMENS
+                  ROUPAS MULHERES
                 </Typography>
               </FlexSidebarItems>
             </AccordionDetails>
