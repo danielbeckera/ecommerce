@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import IncreaseDecreaseProduct from "./IncreaseDecreaseProduct";
 
 const Container = styled.div`
   display: flex;
@@ -41,7 +42,9 @@ function CartItemInfo(props) {
       <FlexContainer>
         <ProductImage src={`${props.image}`}></ProductImage>
         <ProductTitle>{props.title}</ProductTitle>
-        <h5>Qtd: {props.quantity} </h5>
+        <h5>
+          <IncreaseDecreaseProduct quantity={props.quantity} />
+        </h5>
         <ProductPrice>{`$${props.price}`}</ProductPrice>
       </FlexContainer>
     </Container>
