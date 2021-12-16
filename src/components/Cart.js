@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import CartItemDescription from "./CartItemDescription";
+import CartItemDescription from "./CartItemInfo";
 import { ArrowBack } from "@mui/icons-material";
 
 const Container = styled.div`
@@ -18,6 +18,11 @@ const BackHomepage = styled.span`
   font-weight: 600;
 `;
 
+const TotalPrice = styled.span`
+  font-size: 1.3rem;
+  font-weight: 500;
+`;
+
 const FlexContainer = styled.div`
   color: black;
   display: flex;
@@ -25,11 +30,12 @@ const FlexContainer = styled.div`
   align-items: center;
 `;
 
-const TotalPrice = styled.div`
+const TotalPriceContainer = styled.div`
+  width: 90%;
   color: black;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
 `;
 
 const linkStyle = {
@@ -59,14 +65,15 @@ function Cart(props) {
         <Link to="/" style={linkStyle}>
           <FlexContainer>
             <ArrowBack />
-            <BackHomepage>Voltar à loja</BackHomepage>
+            <BackHomepage>Continuar comprando</BackHomepage>
           </FlexContainer>
         </Link>
         <BackHomepage onClick={props.clearCart}>Limpar Carrinho</BackHomepage>
       </FlexContainer>
-      <TotalPrice>
-        <h1>{totalPrice}</h1>
-      </TotalPrice>
+      <TotalPriceContainer>
+        <span>Valor Total:</span>
+        <TotalPrice>${totalPrice}</TotalPrice>
+      </TotalPriceContainer>
 
       {cartItems.map((item) => {
         return (

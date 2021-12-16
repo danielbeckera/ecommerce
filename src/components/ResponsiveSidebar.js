@@ -8,21 +8,10 @@ import {
 } from "@mui/material";
 import { ArrowRight, MenuOutlined } from "@mui/icons-material";
 import styled from "styled-components";
-import ItemsScreen from "./ItemsScreen";
-import axios from "axios";
-import ReactLoading from "react-loading";
 
 const FlexSidebarItems = styled.div`
   display: flex;
   align-items: center;
-`;
-
-const Container = styled.div`
-  width: 25%;
-  visibility: hidden;
-  @media (min-width: 850px) {
-    visibility: visible;
-  }
 `;
 
 const DrawerContainer = styled.div`

@@ -4,8 +4,6 @@ import {
   SearchOutlined,
   FavoriteBorderOutlined,
   ShoppingBasketOutlined,
-  ArrowDropDownOutlined,
-  ArrowDropUpOutlined,
 } from "@mui/icons-material";
 import { Avatar, Badge } from "@mui/material";
 import photo from "../assets/product.jpg";
@@ -116,22 +114,10 @@ function Header(props) {
         {/* Navigation */}
         <nav>
           <Navbar>
-            <NavbarItems>
-              LOJA
-              <ArrowDropUpOutlined />
-            </NavbarItems>
-            <NavbarItems>
-              FÁBRICA
-              <ArrowDropDownOutlined />
-            </NavbarItems>
-            <NavbarItems>
-              JORNAL
-              <ArrowDropDownOutlined />
-            </NavbarItems>
-            <NavbarItems>
-              SOBRE
-              <ArrowDropDownOutlined />
-            </NavbarItems>
+            <NavbarItems>LOJA</NavbarItems>
+            <NavbarItems>FÁBRICA</NavbarItems>
+            <NavbarItems>JORNAL</NavbarItems>
+            <NavbarItems>SOBRE</NavbarItems>
           </Navbar>
         </nav>
         {/* Avatar section */}

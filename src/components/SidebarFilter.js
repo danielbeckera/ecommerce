@@ -21,6 +21,10 @@ const Container = styled.div`
   }
 `;
 
+const ItemSidebar = styled.span`
+  cursor: pointer;
+`;
+
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
   return {
@@ -67,7 +71,7 @@ function SidebarFilter(props) {
                   onClick={() => props.getItems("electronics")}
                   sx={{ fontSize: "0.7rem" }}
                 >
-                  <span>ELETRONICOS</span>
+                  <ItemSidebar>ELETRONICOS</ItemSidebar>
                 </Typography>
               </FlexSidebarItems>
             </AccordionDetails>
@@ -93,7 +97,7 @@ function SidebarFilter(props) {
                   onClick={() => props.getItems("jewelery")}
                   sx={{ fontSize: "0.7rem" }}
                 >
-                  JOALHERIA
+                  <ItemSidebar>JOALHERIA</ItemSidebar>
                 </Typography>
               </FlexSidebarItems>
             </AccordionDetails>
@@ -119,7 +123,7 @@ function SidebarFilter(props) {
                   onClick={() => props.getItems("men's%20clothing")}
                   sx={{ fontSize: "0.7rem" }}
                 >
-                  ROUPAS HOMENS
+                  <ItemSidebar>ROUPAS HOMENS</ItemSidebar>
                 </Typography>
               </FlexSidebarItems>
             </AccordionDetails>
@@ -145,7 +149,7 @@ function SidebarFilter(props) {
                   onClick={() => props.getItems("women's%20clothing")}
                   sx={{ fontSize: "0.7rem" }}
                 >
-                  ROUPAS MULHERES
+                  <ItemSidebar>ROUPAS MULHERES</ItemSidebar>
                 </Typography>
               </FlexSidebarItems>
             </AccordionDetails>
