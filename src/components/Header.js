@@ -7,10 +7,11 @@ import {
   ArrowDropDownOutlined,
   ArrowDropUpOutlined,
 } from "@mui/icons-material";
-import { Avatar } from "@mui/material";
+import { Avatar, Badge } from "@mui/material";
 import photo from "../assets/product.jpg";
 import ResponsiveSidebar from "./ResponsiveSidebar";
 import { Link } from "react-router-dom";
+import { makeStyles } from "@mui/styles";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -69,6 +70,12 @@ const FlexContainer = styled.div`
   }
 `;
 
+const useStyles = makeStyles({
+  root: {
+    color: "black",
+  },
+});
+
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
   return {
@@ -78,6 +85,8 @@ function getWindowDimensions() {
 }
 
 function Header(props) {
+  const classes = useStyles();
+
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
   );
@@ -135,7 +144,13 @@ function Header(props) {
             <SearchOutlined sx={{ marginRight: "15px" }} />
             <FavoriteBorderOutlined sx={{ marginRight: "15px" }} />
             <Link to="/cart">
-              <ShoppingBasketOutlined sx={{ marginRight: "15px" }} />
+              <Badge
+                color="error"
+                badgeContent={props.numberItemsCart}
+                className={classes.root}
+              >
+                <ShoppingBasketOutlined sx={{ marginRight: "15px" }} />
+              </Badge>
             </Link>
           </IconsContainer>
         </AvatarSection>

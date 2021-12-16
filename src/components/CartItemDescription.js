@@ -1,10 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Box, Grid, Item } from "@mui/material";
 
 const Container = styled.div`
   display: flex;
-  flex-direction: space-around;
   margin: 0 auto;
   width: 80%;
   border: 1px solid #d3d3d3;
@@ -15,11 +13,24 @@ const ProductTitle = styled.p`
   margin-left: 1rem;
 `;
 
+const ProductPrice = styled.p`
+  margin-right: 3rem;
+  font-weight: 500;
+`;
+
+const FlexContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+
 function CartItemDescription(props) {
   return (
     <Container>
-      <ProductTitle>{props.title}</ProductTitle>
-      <p>{props.price}</p>
+      <FlexContainer>
+        <ProductTitle>{props.title}</ProductTitle>
+        <ProductPrice>{`$${props.price}`}</ProductPrice>
+      </FlexContainer>
     </Container>
   );
 }

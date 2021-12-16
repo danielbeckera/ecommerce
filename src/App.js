@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Shop from "./components/Shop";
 import Cart from "./components/Cart";
 import { Routes, Route } from "react-router-dom";
@@ -8,6 +8,7 @@ function App() {
   const [itemsToDisplay, setItemsToDisplay] = useState([]);
   const [loading, setLoading] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [numberItemsCart, setNumberItemsCart] = useState();
 
   const getItems = (category) => {
     setLoading(true);
@@ -24,6 +25,10 @@ function App() {
       });
   };
 
+  useEffect(() => {
+    setNumberItemsCart(cartItems.length);
+  }, [cartItems]);
+
   const handleAddCart = (id) => {
     itemsToDisplay.map((item) => {
       if (id === item.id) {
@@ -39,6 +44,7 @@ function App() {
         path="/"
         element={
           <Shop
+            numberItemsCart={numberItemsCart}
             itemsToDisplay={itemsToDisplay}
             handleAddCart={handleAddCart}
             getItems={getItems}
@@ -46,7 +52,13 @@ function App() {
           />
         }
       />
-      <Route exact path="/cart" element={<Cart cartItems={cartItems} />} />
+      <Route
+        exact
+        path="/cart"
+        element={
+          <Cart numberItemsCart={numberItemsCart} cartItems={cartItems} />
+        }
+      />
     </Routes>
   );
 }

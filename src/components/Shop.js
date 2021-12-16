@@ -23,6 +23,7 @@ function Shop(props) {
   return (
     <Container>
       <Header
+        numberItemsCart={props.numberItemsCart}
         getItems={props.getItems}
         loading={props.loading}
         itemsToDisplay={props.itemsToDisplay}

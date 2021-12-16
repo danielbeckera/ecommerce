@@ -18,6 +18,7 @@ const BackHomepage = styled.span`
 `;
 
 const FlexContainer = styled.div`
+  color: black;
   display: flex;
   align-items: center;
 `;
@@ -35,13 +36,11 @@ function Cart(props) {
 
   return (
     <Container>
-      <Header />
+      <Header numberItemsCart={props.numberItemsCart} />
       <Link to="/" style={linkStyle}>
         <FlexContainer>
-          <BackHomepage>
-            <ArrowBack />
-            Back to Store
-          </BackHomepage>
+          <ArrowBack />
+          <BackHomepage>Back to Store</BackHomepage>
         </FlexContainer>
       </Link>
       {cartItems.map((item) => {
