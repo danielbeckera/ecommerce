@@ -13,6 +13,7 @@ const Container = styled.div`
 `;
 
 const BackHomepage = styled.span`
+  cursor: pointer;
   color: black;
   font-weight: 600;
 `;
@@ -24,16 +25,32 @@ const FlexContainer = styled.div`
   align-items: center;
 `;
 
+const TotalPrice = styled.div`
+  color: black;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
 const linkStyle = {
   textDecoration: "none",
 };
 
 function Cart(props) {
   const [cartItems, setCartItems] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     setCartItems([...props.cartItems]);
   }, [props.cartItems]);
+
+  useEffect(() => {
+    const totalPrice = cartItems.reduce((acc, curr) => {
+      acc += curr.price;
+      return acc;
+    }, 0);
+    setTotalPrice(totalPrice);
+  }, [cartItems]);
 
   return (
     <Container>
@@ -47,6 +64,9 @@ function Cart(props) {
         </Link>
         <BackHomepage onClick={props.clearCart}>Limpar Carrinho</BackHomepage>
       </FlexContainer>
+      <TotalPrice>
+        <h1>{totalPrice}</h1>
+      </TotalPrice>
 
       {cartItems.map((item) => {
         return (

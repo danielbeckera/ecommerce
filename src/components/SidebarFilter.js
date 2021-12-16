@@ -4,9 +4,8 @@ import {
   AccordionDetails,
   AccordionSummary,
   Typography,
-  Drawer,
 } from "@mui/material";
-import { ArrowRight, MenuOutlined } from "@mui/icons-material";
+import { ArrowRight } from "@mui/icons-material";
 import styled from "styled-components";
 
 const FlexSidebarItems = styled.div`
