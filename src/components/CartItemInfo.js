@@ -37,19 +37,9 @@ const FlexContainer = styled.div`
 `;
 
 function CartItemInfo(props) {
-  const [quantityNumber, setQuantityNumber] = useState(0);
-
-  useEffect(() => {
-    setQuantityNumber(props.quantity);
-  }, [props.quantity]);
-
-  const handleAdd = () => {
-    setQuantityNumber((prev) => prev + 1);
-  };
-
-  const handleRemove = () => {
-    setQuantityNumber((prev) => prev - 1);
-  };
+  // useEffect(() => {
+  //   setQuantityNumber(props.quantity);
+  // }, [props.quantity]);
 
   return (
     <Container>
@@ -58,13 +48,13 @@ function CartItemInfo(props) {
         <ProductTitle>{props.title}</ProductTitle>
         <h5>
           <IncreaseDecreaseProduct
-            quantityNumber={quantityNumber}
-            handleAdd={handleAdd}
-            handleRemove={handleRemove}
+            quantityNumber={props.quantityNumber}
+            handleAdd={props.handleAdd}
+            handleRemove={props.handleRemove}
             quantity={props.quantity}
           />
         </h5>
-        <ProductPrice>{`$${props.price * quantityNumber}`}</ProductPrice>
+        <ProductPrice>{`$${props.price * props.quantityNumber}`}</ProductPrice>
       </FlexContainer>
     </Container>
   );

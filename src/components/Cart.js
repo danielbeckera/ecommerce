@@ -46,6 +46,17 @@ function Cart(props) {
   const [cartItems, setCartItems] = useState([]);
   const [iteratedCartItems, setIteratedCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [quantityNumber, setQuantityNumber] = useState(0);
+
+  const handleAdd = (itemValue) => {
+    setTotalPrice((prev) => prev + itemValue);
+    setQuantityNumber((prev) => prev + 1);
+  };
+
+  const handleRemove = (itemValue) => {
+    setTotalPrice((prev) => prev - itemValue);
+    setQuantityNumber((prev) => prev - 1);
+  };
 
   useEffect(() => {
     setCartItems([...props.cartItems]);
@@ -89,6 +100,9 @@ function Cart(props) {
       {iteratedCartItems.map((item) => {
         return (
           <CartItemInfo
+            quantityNumber={quantityNumber}
+            handleAdd={() => handleAdd(item.price)}
+            handleRemove={() => handleRemove(item.price)}
             quantity={quantity(item.id)}
             image={item.image}
             key={item.id}
