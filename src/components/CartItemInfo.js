@@ -44,6 +44,7 @@ function CartItemInfo(props) {
   }, [props.quantity]);
 
   const handleAdd = () => {
+    props.test();
     setQuantityNumber((prev) => prev + 1);
   };
 

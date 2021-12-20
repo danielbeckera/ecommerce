@@ -47,15 +47,18 @@ function Cart(props) {
   const [iteratedCartItems, setIteratedCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
+  // Recebe cartItems de props do componente App e adiciona pro estado do proprio componente Cart
   useEffect(() => {
     setCartItems([...props.cartItems]);
   }, [props.cartItems]);
 
+  // Itera os itens do cart e devolve apenas 1 de cada pra ser mostrado no carrinho
   useEffect(() => {
     const iteratedCart = [...new Set(cartItems.map((item) => item))];
     setIteratedCartItems(iteratedCart);
   }, [cartItems]);
 
+  // Usa reduce pra pegar o total de prices de dentro do array cartItems, e seta o estado totalPrice com esse valor, pra ser mostrado no valor total do carrinho
   useEffect(() => {
     const totalPrice = cartItems.reduce((acc, curr) => {
       acc += curr.price;
@@ -67,6 +70,13 @@ function Cart(props) {
   const quantity = (id) => {
     const filteredItems = cartItems.filter((item) => item.id === id);
     return filteredItems.length;
+  };
+
+  const test = (id) => {
+    const item = cartItems.find((item) => item.id === id);
+    console.log(item);
+    // cartItems.push(item);
+    setCartItems([...cartItems, item]);
   };
 
   return (
@@ -89,6 +99,7 @@ function Cart(props) {
       {iteratedCartItems.map((item) => {
         return (
           <CartItemInfo
+            test={() => test(item.id)}
             quantity={quantity(item.id)}
             image={item.image}
             key={item.id}
