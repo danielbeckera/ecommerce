@@ -50,6 +50,11 @@ function App() {
     setCartItems([]);
   };
 
+  const addItemCart = (id) => {
+    const item = cartItems.find((item) => item.id === id);
+    setCartItems([...cartItems, item]);
+  };
+
   return (
     <Routes>
       <Route
@@ -72,6 +77,7 @@ function App() {
         path="/cart"
         element={
           <Cart
+            addItemCart={addItemCart}
             clearCart={clearCart}
             numberItemsCart={numberItemsCart}
             cartItems={cartItems}

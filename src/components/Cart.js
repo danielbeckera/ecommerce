@@ -72,11 +72,6 @@ function Cart(props) {
     return filteredItems.length;
   };
 
-  const addItemCart = (id) => {
-    const item = cartItems.find((item) => item.id === id);
-    setCartItems([...cartItems, item]);
-  };
-
   return (
     <Container>
       <Header numberItemsCart={props.numberItemsCart} />
@@ -98,7 +93,7 @@ function Cart(props) {
         return (
           <CartItemInfo
             itensCarrinho={cartItems}
-            addItemCart={() => addItemCart(item.id)}
+            addItemCart={() => props.addItemCart(item.id)}
             quantity={quantity(item.id)}
             image={item.image}
             key={item.id}
