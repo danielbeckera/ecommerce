@@ -72,10 +72,8 @@ function Cart(props) {
     return filteredItems.length;
   };
 
-  const test = (id) => {
+  const addItemCart = (id) => {
     const item = cartItems.find((item) => item.id === id);
-    console.log(item);
-    // cartItems.push(item);
     setCartItems([...cartItems, item]);
   };
 
@@ -99,7 +97,8 @@ function Cart(props) {
       {iteratedCartItems.map((item) => {
         return (
           <CartItemInfo
-            test={() => test(item.id)}
+            itensCarrinho={cartItems}
+            addItemCart={() => addItemCart(item.id)}
             quantity={quantity(item.id)}
             image={item.image}
             key={item.id}
