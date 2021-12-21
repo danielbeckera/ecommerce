@@ -55,6 +55,16 @@ function App() {
     setCartItems([...cartItems, item]);
   };
 
+  const decreaseItemCart = (id) => {
+    const item = cartItems.indexOf(cartItems.find((item) => item.id === id));
+    setCartItems(cartItems.splice(item, 3));
+  };
+
+  const deleteItemCart = (id) => {
+    const item = cartItems.filter((item) => item.id !== id);
+    setCartItems(item);
+  };
+
   return (
     <Routes>
       <Route
@@ -62,6 +72,7 @@ function App() {
         path="/"
         element={
           <Shop
+            decreaseItemCart={decreaseItemCart}
             handleCloseSnackbar={handleCloseSnackbar}
             open={open}
             numberItemsCart={numberItemsCart}
@@ -77,6 +88,8 @@ function App() {
         path="/cart"
         element={
           <Cart
+            deleteItemCart={deleteItemCart}
+            decreaseItemCart={decreaseItemCart}
             addItemCart={addItemCart}
             clearCart={clearCart}
             numberItemsCart={numberItemsCart}

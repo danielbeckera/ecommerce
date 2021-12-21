@@ -86,13 +86,15 @@ function Cart(props) {
       </FlexContainer>
       <TotalPriceContainer>
         <span>Valor Total:</span>
-        <TotalPrice>${totalPrice}</TotalPrice>
+        <TotalPrice>${totalPrice.toFixed(2)}</TotalPrice>
       </TotalPriceContainer>
 
       {iteratedCartItems.map((item) => {
         return (
           <CartItemInfo
+            deleteItemCart={() => props.deleteItemCart(item.id)}
             itensCarrinho={cartItems}
+            decreaseItemCart={() => props.decreaseItemCart(item.id)}
             addItemCart={() => props.addItemCart(item.id)}
             quantity={quantity(item.id)}
             image={item.image}

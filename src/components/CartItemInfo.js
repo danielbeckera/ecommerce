@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import IncreaseDecreaseProduct from "./IncreaseDecreaseProduct";
+import { DeleteOutline } from "@mui/icons-material";
+import {
+  IconButton,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  Button,
+} from "@mui/material";
 
 const Container = styled.div`
   display: flex;
@@ -38,6 +48,7 @@ const FlexContainer = styled.div`
 
 function CartItemInfo(props) {
   const [quantityNumber, setQuantityNumber] = useState(0);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     setQuantityNumber(props.quantity);
@@ -49,7 +60,16 @@ function CartItemInfo(props) {
   };
 
   const handleRemove = () => {
+    props.decreaseItemCart();
     setQuantityNumber((prev) => prev - 1);
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -65,7 +85,35 @@ function CartItemInfo(props) {
             quantity={props.quantity}
           />
         </h5>
+        <p>Price: ${props.price}</p>
         <ProductPrice>{`$${props.price * quantityNumber}`}</ProductPrice>
+        <IconButton>
+          <DeleteOutline
+            onClick={handleClickOpen}
+            sx={{ marginRight: "1em" }}
+          />
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Deseja deletar o item selecionado?"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Ao deletar, o valor total será recalculado.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>CANCELAR</Button>
+              <Button onClick={props.deleteItemCart} autoFocus>
+                DELETAR
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </IconButton>
       </FlexContainer>
     </Container>
   );

@@ -36,7 +36,7 @@ function ItemsScreen(props) {
       })}
       <Snackbar
         open={props.open}
-        autoHideDuration={3000}
+        autoHideDuration={1500}
         onClose={props.handleCloseSnackbar}
       >
         <Alert
