@@ -56,8 +56,10 @@ function App() {
   };
 
   const decreaseItemCart = (id) => {
+    let itensCarrinhoAssigned = cartItems;
     const item = cartItems.indexOf(cartItems.find((item) => item.id === id));
-    setCartItems(cartItems.splice(item, 3));
+    let valores = itensCarrinhoAssigned.splice(item, cartItems.length - 1);
+    setCartItems(valores);
   };
 
   const deleteItemCart = (id) => {

@@ -61,7 +61,6 @@ function CartItemInfo(props) {
 
   const handleRemove = () => {
     props.decreaseItemCart();
-    setQuantityNumber((prev) => prev - 1);
   };
 
   const handleClickOpen = () => {

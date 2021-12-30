@@ -19,6 +19,7 @@ const Container = styled.div`
 `;
 
 const InnerContainer = styled.div`
+  cursor: pointer;
   display: flex;
   justify-content: flex-end;
   width: 100%;
