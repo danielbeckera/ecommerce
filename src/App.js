@@ -27,6 +27,20 @@ function App() {
   };
 
   useEffect(() => {
+    axios
+      .get(`https://fakestoreapi.com/products`)
+      .then(function (response) {
+        setItemsToDisplay(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .then(function () {
+        setLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
     setNumberItemsCart(cartItems.length);
   }, [cartItems]);
 

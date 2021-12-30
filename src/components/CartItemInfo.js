@@ -79,8 +79,10 @@ function CartItemInfo(props) {
           decreaseItemCart={props.decreaseItemCart}
           quantity={props.quantity}
         />
-        <p>Price: ${props.price}</p>
-        <ProductPrice>{`$${props.price * quantityNumber}`}</ProductPrice>
+        <p>Price: ${props.price.toFixed(2)}</p>
+        <ProductPrice>{`$${(props.price * quantityNumber).toFixed(
+          2
+        )}`}</ProductPrice>
         <IconButton>
           <DeleteOutline
             onClick={handleClickOpen}
