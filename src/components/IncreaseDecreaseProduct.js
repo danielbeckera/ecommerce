@@ -7,7 +7,7 @@ function IncreaseDecreaseProduct(props) {
     <div>
       <IconButton
         disabled={props.quantityNumber <= 1}
-        onClick={props.handleRemove}
+        onClick={props.decreaseItemCart}
       >
         <Remove />
       </IconButton>

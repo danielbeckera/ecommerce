@@ -11,6 +11,7 @@ import {
   DialogActions,
   Button,
 } from "@mui/material";
+import { Remove, Add } from "@mui/icons-material";
 
 const Container = styled.div`
   display: flex;
@@ -59,10 +60,6 @@ function CartItemInfo(props) {
     setQuantityNumber((prev) => prev + 1);
   };
 
-  const handleRemove = () => {
-    props.decreaseItemCart();
-  };
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -76,14 +73,12 @@ function CartItemInfo(props) {
       <FlexContainer>
         <ProductImage src={`${props.image}`}></ProductImage>
         <ProductTitle>{props.title}</ProductTitle>
-        <h5>
-          <IncreaseDecreaseProduct
-            quantityNumber={quantityNumber}
-            handleAdd={handleAdd}
-            handleRemove={handleRemove}
-            quantity={props.quantity}
-          />
-        </h5>
+        <IncreaseDecreaseProduct
+          quantityNumber={quantityNumber}
+          handleAdd={handleAdd}
+          decreaseItemCart={props.decreaseItemCart}
+          quantity={props.quantity}
+        />
         <p>Price: ${props.price}</p>
         <ProductPrice>{`$${props.price * quantityNumber}`}</ProductPrice>
         <IconButton>

@@ -58,8 +58,10 @@ function App() {
   const decreaseItemCart = (id) => {
     let itensCarrinhoAssigned = cartItems;
     const item = cartItems.indexOf(cartItems.find((item) => item.id === id));
-    let valores = itensCarrinhoAssigned.splice(item, cartItems.length - 1);
-    setCartItems(valores);
+    if (item > -1) {
+      itensCarrinhoAssigned.splice(item, 1);
+    }
+    setCartItems([...itensCarrinhoAssigned]);
   };
 
   const deleteItemCart = (id) => {
@@ -74,7 +76,6 @@ function App() {
         path="/"
         element={
           <Shop
-            decreaseItemCart={decreaseItemCart}
             handleCloseSnackbar={handleCloseSnackbar}
             open={open}
             numberItemsCart={numberItemsCart}
