@@ -53,7 +53,32 @@ function ItemsScreen(props) {
         /> */}
       </Wrapper2>
       <Container>
-        {itemsToDisplay.map((item) => {
+        {props.arrSearchedItems.length > 0
+          ? props.arrSearchedItems.map((item) => {
+              return (
+                <Product
+                  loading={props.loading}
+                  key={item.item.id}
+                  title={item.item.title}
+                  price={item.item.price}
+                  image={item.item.image}
+                  handleAddCart={props.handleAddCart}
+                />
+              );
+            })
+          : itemsToDisplay.map((item) => {
+              return (
+                <Product
+                  loading={props.loading}
+                  key={item.id}
+                  title={item.title}
+                  price={item.price}
+                  image={item.image}
+                  handleAddCart={props.handleAddCart}
+                />
+              );
+            })}
+        {/* {itemsToDisplay.map((item) => {
           return (
             <Product
               loading={props.loading}
@@ -64,7 +89,7 @@ function ItemsScreen(props) {
               handleAddCart={props.handleAddCart}
             />
           );
-        })}
+        })} */}
         <Snackbar
           open={props.open}
           autoHideDuration={1500}

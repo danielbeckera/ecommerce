@@ -12,14 +12,16 @@ function App() {
   const [numberItemsCart, setNumberItemsCart] = useState();
   const [open, setOpen] = useState(false);
   const [itemSearched, setItemSearched] = useState("");
+  const [arrSearchedItems, setArrSearchedItems] = useState([]);
 
   const fuse = new Fuse(itemsToDisplay, {
-    keys: ["title", "description"],
+    keys: ["title"],
   });
 
-  const results = fuse.search(itemSearched);
-
-  console.log(results);
+  useEffect(() => {
+    const results = fuse.search(itemSearched);
+    setArrSearchedItems(results);
+  }, [itemSearched]);
 
   const handleSearch = (event) => {
     setItemSearched(event.target.value);
@@ -108,6 +110,7 @@ function App() {
             handleCloseSnackbar={handleCloseSnackbar}
             handleAddCart={handleAddCart}
             getItems={getItems}
+            arrSearchedItems={arrSearchedItems}
             itemSearched={itemSearched}
             open={open}
             numberItemsCart={numberItemsCart}

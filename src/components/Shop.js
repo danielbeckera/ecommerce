@@ -35,6 +35,7 @@ function Shop(props) {
           itemsToDisplay={props.itemsToDisplay}
         />
         <ItemsScreen
+          arrSearchedItems={props.arrSearchedItems}
           itemSearched={props.itemSearched}
           handleSearch={props.handleSearch}
           handleCloseSnackbar={props.handleCloseSnackbar}
