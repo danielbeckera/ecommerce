@@ -17,6 +17,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 const Wrapper2 = styled.div`
@@ -53,27 +54,27 @@ function ItemsScreen(props) {
         /> */}
       </Wrapper2>
       <Container>
-        {props.arrSearchedItems.length > 0
-          ? props.arrSearchedItems.map((item) => {
+        {props.arrSearchedItems.length <= 0
+          ? itemsToDisplay.map((item) => {
               return (
                 <Product
                   loading={props.loading}
-                  key={item.item.id}
-                  title={item.item.title}
-                  price={item.item.price}
-                  image={item.item.image}
+                  id={item.id}
+                  title={item.title}
+                  price={item.price}
+                  image={item.image}
                   handleAddCart={props.handleAddCart}
                 />
               );
             })
-          : itemsToDisplay.map((item) => {
+          : props.arrSearchedItems.map((item) => {
               return (
                 <Product
                   loading={props.loading}
-                  key={item.id}
-                  title={item.title}
-                  price={item.price}
-                  image={item.image}
+                  id={item.item.id}
+                  title={item.item.title}
+                  price={item.item.price}
+                  image={item.item.image}
                   handleAddCart={props.handleAddCart}
                 />
               );

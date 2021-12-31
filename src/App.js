@@ -16,6 +16,9 @@ function App() {
 
   const fuse = new Fuse(itemsToDisplay, {
     keys: ["title"],
+    includeScore: true,
+    includeMatches: false,
+    distance: 100,
   });
 
   useEffect(() => {
