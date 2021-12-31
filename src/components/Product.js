@@ -8,12 +8,12 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-right: 3em;
-  margin-bottom: 3em;
+  margin-right: 2em;
+  margin-bottom: 2em;
 
   @media (min-width: 850px) {
-    margin-right: 3em;
-    margin-left: 3em;
+    margin-right: 2em;
+    margin-left: 2em;
     width: 26%;
   }
 `;

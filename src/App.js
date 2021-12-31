@@ -3,6 +3,7 @@ import Shop from "./components/Shop";
 import Cart from "./components/Cart";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
+import Fuse from "fuse.js";
 
 function App() {
   const [itemsToDisplay, setItemsToDisplay] = useState([]);
@@ -10,6 +11,19 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [numberItemsCart, setNumberItemsCart] = useState();
   const [open, setOpen] = useState(false);
+  const [itemSearched, setItemSearched] = useState("");
+
+  const fuse = new Fuse(itemsToDisplay, {
+    keys: ["title", "description"],
+  });
+
+  const results = fuse.search(itemSearched);
+
+  console.log(results);
+
+  const handleSearch = (event) => {
+    setItemSearched(event.target.value);
+  };
 
   const getItems = (category) => {
     setLoading(true);
@@ -90,12 +104,14 @@ function App() {
         path="/"
         element={
           <Shop
+            handleSearch={handleSearch}
             handleCloseSnackbar={handleCloseSnackbar}
+            handleAddCart={handleAddCart}
+            getItems={getItems}
+            itemSearched={itemSearched}
             open={open}
             numberItemsCart={numberItemsCart}
             itemsToDisplay={itemsToDisplay}
-            handleAddCart={handleAddCart}
-            getItems={getItems}
             loading={loading}
           />
         }
