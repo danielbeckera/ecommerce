@@ -23,6 +23,7 @@ function Shop(props) {
   return (
     <Container>
       <Header
+        openSearchBar={props.openSearchBar}
         numberItemsCart={props.numberItemsCart}
         getItems={props.getItems}
         loading={props.loading}
@@ -35,6 +36,7 @@ function Shop(props) {
           itemsToDisplay={props.itemsToDisplay}
         />
         <ItemsScreen
+          searchBarOpened={props.searchBarOpened}
           arrSearchedItems={props.arrSearchedItems}
           itemSearched={props.itemSearched}
           handleSearch={props.handleSearch}

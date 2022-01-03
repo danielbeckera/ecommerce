@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const Wrapper2 = styled.div`
+const WrapperSearchBar = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 2em;
@@ -41,18 +41,15 @@ function ItemsScreen(props) {
 
   return (
     <Wrapper>
-      <Wrapper2>
-        <SearchInput
-          onChange={props.handleSearch}
-          type="text"
-          placeholder="Buscar..."
-        />
-        {/* <SearchBar
-          value={props.itemSearched}
-          onChange={(newValue) => props.itemSearched(newValue)}
-          style={{ width: "50%" }}
-        /> */}
-      </Wrapper2>
+      <WrapperSearchBar>
+        {props.searchBarOpened && (
+          <SearchInput
+            onChange={props.handleSearch}
+            type="text"
+            placeholder="Buscar..."
+          />
+        )}
+      </WrapperSearchBar>
       <Container>
         {props.arrSearchedItems.length <= 0
           ? itemsToDisplay.map((item) => {

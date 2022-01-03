@@ -86,7 +86,7 @@ function Cart(props) {
       </FlexContainer>
       <TotalPriceContainer>
         <span>Valor Total:</span>
-        <TotalPrice>${totalPrice.toFixed(2)}</TotalPrice>
+        <TotalPrice>R${totalPrice.toFixed(2)}</TotalPrice>
       </TotalPriceContainer>
 
       {iteratedCartItems.map((item) => {

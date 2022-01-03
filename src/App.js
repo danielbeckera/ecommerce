@@ -13,6 +13,7 @@ function App() {
   const [open, setOpen] = useState(false);
   const [itemSearched, setItemSearched] = useState("");
   const [arrSearchedItems, setArrSearchedItems] = useState([]);
+  const [searchBarOpened, setSearchBarOpened] = useState(false);
 
   const fuse = new Fuse(itemsToDisplay, {
     keys: ["title"],
@@ -30,6 +31,10 @@ function App() {
     setItemSearched(event.target.value);
   };
 
+  const openSearchBar = () => {
+    setSearchBarOpened(!searchBarOpened);
+  };
+
   const getItems = (category) => {
     setLoading(true);
     axios
@@ -45,7 +50,9 @@ function App() {
       });
   };
 
+  // get all items and render on screen
   useEffect(() => {
+    setLoading(true);
     axios
       .get(`https://fakestoreapi.com/products`)
       .then(function (response) {
@@ -109,10 +116,12 @@ function App() {
         path="/"
         element={
           <Shop
+            openSearchBar={openSearchBar}
             handleSearch={handleSearch}
             handleCloseSnackbar={handleCloseSnackbar}
             handleAddCart={handleAddCart}
             getItems={getItems}
+            searchBarOpened={searchBarOpened}
             arrSearchedItems={arrSearchedItems}
             itemSearched={itemSearched}
             open={open}

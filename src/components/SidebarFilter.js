@@ -61,7 +61,7 @@ function SidebarFilter(props) {
                   fontSize: "1.2rem",
                 }}
               >
-                Eletronicos
+                Eletrônicos
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -71,7 +71,7 @@ function SidebarFilter(props) {
                   onClick={() => props.getItems("electronics")}
                   sx={{ fontSize: "0.7rem" }}
                 >
-                  <ItemSidebar>ELETRONICOS</ItemSidebar>
+                  <ItemSidebar>ELETRÔNICOS</ItemSidebar>
                 </Typography>
               </FlexSidebarItems>
             </AccordionDetails>

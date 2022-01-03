@@ -127,7 +127,10 @@ function Header(props) {
             <Avatar src={photo} sx={{ marginRight: "1em" }} />
           </WelcomeAvatarSection>
           <IconsContainer>
-            <SearchOutlined sx={{ marginRight: "15px" }} />
+            <SearchOutlined
+              onClick={props.openSearchBar}
+              sx={{ marginRight: "15px", cursor: "pointer" }}
+            />
             <FavoriteBorderOutlined sx={{ marginRight: "15px" }} />
             <Link to="/cart">
               <Badge
