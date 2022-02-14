@@ -1,7 +1,7 @@
 # eCommerce app template made with ReactJS
 
-## How to run the project
-# Open the terminal and do the following steps:
+# How to run the project
+## Open the terminal and do the following steps:
 ```
 1) Clone this repository
 2) inside repo folder, run npm install
